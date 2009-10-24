@@ -27,7 +27,6 @@ describe MorseTranslator do
   end
 
   it "ignores punctuation" do
-    pending
     @morse.translate('The & quick -(*^*@#%)& brown fox jumps over the lazy dog.').should == '- .... . / --.- ..- .. -.-. -.- / -... .-. --- .-- -. / ..-. --- -..- / .--- ..- -- .--. ... / --- ...- . .-. / - .... . / .-.. .- --.. -.-- / -.. --- --.'
   end
     
