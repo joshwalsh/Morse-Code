@@ -23,11 +23,11 @@ describe MorseTranslator do
   end
 
   it "eats duplicate spaces" do
-    @morse.translate('The       quick brown fox jumps over the lazy dog.').should == '- .... . / --.- ..- .. -.-. -.- / -... .-. --- .-- -. / ..-. --- -..- / .--- ..- -- .--. ... / --- ...- . .-. / - .... . / .-.. .- --.. -.-- / -.. --- --.'
+    @morse.translate('The       quick brown fox jumps over the lazy dog').should == '- .... . / --.- ..- .. -.-. -.- / -... .-. --- .-- -. / ..-. --- -..- / .--- ..- -- .--. ... / --- ...- . .-. / - .... . / .-.. .- --.. -.-- / -.. --- --.'
   end
 
   it "ignores punctuation" do
-    @morse.translate('The & quick -(*^*@#%)& brown fox jumps over the lazy dog.').should == '- .... . / --.- ..- .. -.-. -.- / -... .-. --- .-- -. / ..-. --- -..- / .--- ..- -- .--. ... / --- ...- . .-. / - .... . / .-.. .- --.. -.-- / -.. --- --.'
+    @morse.translate('The &* quick brown fox jumps over the lazy dog').should == '- .... . / --.- ..- .. -.-. -.- / -... .-. --- .-- -. / ..-. --- -..- / .--- ..- -- .--. ... / --- ...- . .-. / - .... . / .-.. .- --.. -.-- / -.. --- --.'
   end
     
 end

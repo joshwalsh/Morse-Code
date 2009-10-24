@@ -5,11 +5,14 @@ class MorseTranslator
 
   def translate(phrase)
     phrase = phrase.downcase
-    phrase.gsub!(/ +/, ' ')
+    phrase = sanitize_phrase(phrase).squeeze(' ')
 
     phrase.chars.inject('') do |phrase, letter| 
       translation = lookup_translation_for_letter(letter)
-      phrase << "#{translation} " unless translation.nil?
+      
+      phrase << unless translation.nil?
+        "#{translation} "
+      end.to_s
     end
     
     phrase.strip
@@ -17,5 +20,13 @@ class MorseTranslator
 
   def lookup_translation_for_letter(letter)
     load_morse_translations[letter]
+  end
+
+  def sanitize_phrase(phrase)
+    phrase.gsub(/./) do |letter|
+      if load_morse_translations[letter]
+        letter
+      end.to_s
+    end
   end
 end
