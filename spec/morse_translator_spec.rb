@@ -6,28 +6,30 @@ describe MorseTranslator do
     @morse = MorseTranslator.new
   end
 
-  it "translates 'a'" do
+  it "translates a single lowercase letter" do
     @morse.translate('a').should == '.-'
   end
 
-  it "translates 'A'" do
+  it "translates a single uppercase letter" do
     @morse.translate('A').should == '.-'
   end
 
-  it "translates 'b' do" do
-    @morse.translate('b').should == '-...'
+  it "translates a word" do
+    @morse.translate('letter').should == '.-.. . - - . .-.'
   end
 
-  it "translates 'c' do" do
-    @morse.translate('b').should == '-...'
+  it "translates a sentance" do
+    @morse.translate('The quick brown fox jumps over the lazy dog').should == '- .... . / --.- ..- .. -.-. -.- / -... .-. --- .-- -. / ..-. --- -..- / .--- ..- -- .--. ... / --- ...- . .-. / - .... . / .-.. .- --.. -.-- / -.. --- --.'
   end
 
-  it "translates 'ab'" do
-    @morse.translate('ab').should == '.--...'
+  it "eats duplicate spaces" do
+    @morse.translate('The       quick brown fox jumps over the lazy dog.').should == '- .... . / --.- ..- .. -.-. -.- / -... .-. --- .-- -. / ..-. --- -..- / .--- ..- -- .--. ... / --- ...- . .-. / - .... . / .-.. .- --.. -.-- / -.. --- --.'
   end
 
-  it "translates 'a b'" do
-    @morse.translate('a b').should == '.--...'
+  it "ignores punctuation" do
+    pending
+    @morse.translate('The & quick -(*^*@#%)& brown fox jumps over the lazy dog.').should == '- .... . / --.- ..- .. -.-. -.- / -... .-. --- .-- -. / ..-. --- -..- / .--- ..- -- .--. ... / --- ...- . .-. / - .... . / .-.. .- --.. -.-- / -.. --- --.'
   end
+    
 end
 
