@@ -4,7 +4,9 @@ class MorseTranslator
   include LoadsMorseTranslations
 
   def translate(phrase)
-    phrase.downcase.chars.inject('') do |phrase, letter| 
+    phrase = phrase.downcase.gsub(/\s/, '')
+
+    phrase.chars.inject('') do |phrase, letter| 
       phrase << lookup_translation_for_letter(letter)
     end
   end

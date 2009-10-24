@@ -25,5 +25,9 @@ describe MorseTranslator do
   it "translates 'ab'" do
     @morse.translate('ab').should == '.--...'
   end
+
+  it "translates 'a b'" do
+    @morse.translate('a b').should == '.--...'
+  end
 end
 
